@@ -56,19 +56,23 @@ never writes them.
 
 | Defense | Failure it answers | Evidence |
 | --- | --- | --- |
-| Verify against raw source, never a summary | semantic drift ("mildly spicy" → "loves spicy") | The AI Corner; arXiv 2605.16746 |
-| Founding tests per skill | procedural drift; self-evolution is non-monotonic | arXiv 2605.09315 |
-| Charter pinned outside write scope | compaction drops rules, 30–59% violations | arXiv 2606.22528 |
-| TTL + daily re-validation | memory rot; broad retention triples violations | arXiv 2605.17830 |
-| Per-project isolation + scope frontmatter | cross-context bleed; retrieval collision | The AI Corner; arXiv 2610.25858 |
-| Conclusions-not-transcripts handoffs | poisoning and laundering survive compression | arXiv 2605.17830, 2605.16746 |
-| Additive scoped skills | catastrophic forgetting on shared-rule edits | arXiv 2605.09315 |
-| Rewrite on trigger, never calendar | over-refinement makes memory generic | Letta, *Memory Models* |
+| Verify against raw source, never a summary | semantic drift ("mildly spicy" → "loves spicy") | [The AI Corner](https://www.the-ai-corner.com/p/ai-agents-have-a-lifespan); [arXiv 2605.16746](https://arxiv.org/abs/2605.16746) |
+| Founding tests per skill | procedural drift; self-evolution is non-monotonic | [arXiv 2605.09315](https://arxiv.org/abs/2605.09315) |
+| Charter pinned outside write scope | compaction drops rules, 30–59% violations | [arXiv 2606.22528](https://arxiv.org/abs/2606.22528) |
+| TTL + daily re-validation | memory rot; broad retention triples violations | [arXiv 2605.17830](https://arxiv.org/abs/2605.17830) |
+| Per-project isolation + scope frontmatter | cross-context bleed; retrieval collision | [The AI Corner](https://www.the-ai-corner.com/p/ai-agents-have-a-lifespan); [arXiv 2610.25858](https://arxiv.org/abs/2610.25858) |
+| Conclusions-not-transcripts handoffs | poisoning and laundering survive compression | [arXiv 2605.17830](https://arxiv.org/abs/2605.17830), [2605.16746](https://arxiv.org/abs/2605.16746) |
+| Additive scoped skills | catastrophic forgetting on shared-rule edits | [arXiv 2605.09315](https://arxiv.org/abs/2605.09315) |
+| Rewrite on trigger, never calendar | over-refinement makes memory generic | [Letta, *Memory Models*](https://www.letta.com/blog/towards-agents-that-learn) |
 
-The lineage, for the curious: Google's SLEEP framework (arXiv 2606.03979)
-supplied the wake/sleep lifecycle and the pruning/selection discipline;
-Letta's sleep-time compute supplied the idle-phase economics; the agent-lifespan
-research supplied every gate. What this repo adds is the harness-level
+The lineage, for the curious: Google's
+[SLEEP framework](https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/)
+([arXiv 2606.03979](https://arxiv.org/abs/2606.03979)) supplied the
+wake/sleep lifecycle and the pruning/selection discipline; Letta's
+[sleep-time compute](https://www.letta.com/blog/sleep-time-compute)
+supplied the idle-phase economics; the
+[agent-lifespan research](https://www.the-ai-corner.com/p/ai-agents-have-a-lifespan)
+supplied every gate. What this repo adds is the harness-level
 implementation — token space, platform-agnostic, no training required.
 
 ## License

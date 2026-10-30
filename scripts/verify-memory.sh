@@ -14,13 +14,20 @@ TODAY=$(date +%F)
 PASS=0; FAIL=0; SKIP=0
 FAILED=()
 
-fm_field() { # fm_field <file> <key> — naive frontmatter scalar lookup
+fm_field() { # fm_field <file> <key> — frontmatter scalar lookup; joins wrapped values
   awk -v key="$2" '
-    /^---$/ { fm = !fm; next } fm && $0 ~ "^  " key ":" {
-      sub("^  " key ":[ ]*", "")
-      sub(/^"/, ""); sub(/"$/, "")   # quoted values: "" means absent
-      print; exit
-    }' "$1"
+    function flush() {
+      if (done) exit
+      done = 1
+      if (acc == "\"\"") acc = ""   # exactly "" means absent; real quoted values keep their quotes
+      print acc; exit
+    }
+    /^---$/ { if (found) flush(); fm = !fm; next }
+    fm && !found && $0 ~ "^  " key ":" { sub("^  " key ":[ ]*", ""); acc = $0; found = 1; next }
+    found && fm && /^    / { l = $0; sub(/^ +/, "", l); acc = acc " " l; next }
+    found { flush() }
+    END { if (found) flush() }
+  ' "$1"
 }
 
 check_url() {
